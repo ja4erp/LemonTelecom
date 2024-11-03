@@ -1,0 +1,298 @@
+<div class="carousel-container">
+	<div class="carousel-main-container">
+		<section class="carousel" aria-label="Gallery">
+			<ol class="carousel__viewport">
+				<li id="carousel__slide1" tabindex="0" class="carousel__slide">
+					<div class="carousel__snapper">
+						<a href="#carousel__slide2" class="carousel__next">Go to next slide</a>
+					</div>
+					<div class="review-container">
+						<h3 class="review-title">La mejor fibra</h3>
+						<h2 class="reviewer-name">ZyZZ</h2>
+						<p class="review-text">Gracias a esta maravillosa empresa, he podido navegar por internet.</p>
+						<img
+							src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-5.svg"
+							alt="Star rating"
+						/>
+					</div>
+				</li>
+				<li id="carousel__slide2" tabindex="0" class="carousel__slide">
+					<div class="carousel__snapper">
+						<a href="#carousel__slide1" class="carousel__prev">Go to previous slide</a>
+					</div>
+					<div class="review-container">
+						<h3 class="review-title">Experiencia sin igual</h3>
+						<h2 class="reviewer-name">Antonio Fernandez</h2>
+						<p class="review-text">Gracias a estas cualidades, logré lanzar mi propio proyecto.</p>
+						<img
+							src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-5.svg"
+							alt="Star rating"
+						/>
+					</div>
+				</li>
+				<li id="carousel__slide3" tabindex="0" class="carousel__slide">
+					<div class="carousel__snapper">
+						<a href="#carousel__slide1" class="carousel__prev">Go to previous slide</a>
+					</div>
+					<div class="review-container">
+						<h3 class="review-title">¡Conexión Perfecta!</h3>
+						<h2 class="reviewer-name">Laura García</h2>
+						<p class="review-text">El mejor soporte que he experimentado, acompañado de los precios más competitivos del mercado.</p>
+						<img
+							src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-5.svg"
+							alt="Star rating"
+						/>
+					</div>
+				</li>
+			</ol>
+			<aside class="carousel__navigation">
+				<ol class="carousel__navigation-list">
+					<li class="carousel__navigation-item">
+						<a href="#carousel__slide1" class="carousel__navigation-button">1</a>
+					</li>
+					<li class="carousel__navigation-item">
+						<a href="#carousel__slide2" class="carousel__navigation-button">2</a>
+					</li>
+					<li class="carousel__navigation-item">
+						<a href="#carousel__slide3" class="carousel__navigation-button">3</a>
+					</li>
+				</ol>
+			</aside>
+		</section>
+	</div>
+</div>
+
+<style>
+	@keyframes tonext {
+		75% {
+			left: 0;
+		}
+		95% {
+			left: 100%;
+		}
+		98% {
+			left: 100%;
+		}
+		99% {
+			left: 0;
+		}
+	}
+
+	@keyframes tostart {
+		75% {
+			left: 0;
+		}
+		95% {
+			left: -300%;
+		}
+		98% {
+			left: -300%;
+		}
+		99% {
+			left: 0;
+		}
+	}
+
+	@keyframes snap {
+		96% {
+			scroll-snap-align: center;
+		}
+		97% {
+			scroll-snap-align: none;
+		}
+		99% {
+			scroll-snap-align: none;
+		}
+		100% {
+			scroll-snap-align: center;
+		}
+	}
+	.carousel-main-container {
+		width: 40rem;
+		height: 15rem;
+		margin: 0 auto;
+		padding: 0 10rem;
+		font-family: "Lato", sans-serif;
+		margin-top: 10rem;
+		background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+		border: 2px solid #c7ff8b;
+		border-radius: 10px;
+	}
+
+	.carousel-container {
+		box-sizing: border-box;
+		scrollbar-color: transparent transparent;
+		scrollbar-width: 0px;
+		overflow-x: hidden;
+	}
+
+	.carousel-container::-webkit-scrollbar {
+		width: 0;
+	}
+
+	.carousel-container::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	.carousel-container::-webkit-scrollbar-thumb {
+		background: transparent;
+		border: none;
+	}
+
+	.carousel-container {
+		-ms-overflow-style: none;
+	}
+
+	ol,
+	li {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.carousel {
+		position: relative;
+		padding-top: 75%;
+		perspective: 100px;
+	}
+
+	.carousel__viewport {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		display: flex;
+		overflow-x: scroll;
+		counter-reset: item;
+		scroll-behavior: smooth;
+		scroll-snap-type: x mandatory;
+	}
+
+	.carousel__slide {
+		position: relative;
+		flex: 0 0 100%;
+		width: 100%;
+		counter-increment: item;
+		border-radius: 19px;
+	}
+
+	.carousel__snapper {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		scroll-snap-align: center;
+	}
+
+	@media (hover: hover) {
+		.carousel__snapper {
+			animation-name: tonext, snap;
+			animation-timing-function: ease;
+			animation-duration: 10s;
+			animation-iteration-count: infinite;
+		}
+
+		.carousel__slide:last-child .carousel__snapper {
+			animation-name: tostart, snap;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.carousel__snapper {
+			animation-name: none;
+		}
+	}
+
+	.carousel:hover .carousel__snapper,
+	.carousel:focus-within .carousel__snapper {
+		animation-name: none;
+	}
+
+	.carousel__navigation {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		text-align: center;
+	}
+
+	.carousel__navigation-list,
+	.carousel__navigation-item {
+		display: inline-block;
+	}
+
+	.carousel__navigation-button {
+		display: inline-block;
+		width: 0.75rem;
+		height: 0.75rem;
+		background-color: transparent;
+		background-clip: content-box;
+		border: 0.104rem solid;
+		border-radius: 50%;
+		font-size: 0;
+		transition: transform 0.1s;
+		border-color: #85d04c;
+		position: relative;
+		top: -25px;
+	}
+
+	.carousel::before,
+	.carousel::after,
+	.carousel__prev,
+	.carousel__next {
+		position: absolute;
+		top: 0;
+		margin-top: 37.5%;
+		width: 4rem;
+		height: 4rem;
+		transform: translateY(-50%);
+		border-radius: 50%;
+		font-size: 0;
+		outline: 0;
+	}
+
+	.carousel::before,
+	.carousel__prev {
+		left: -1rem;
+	}
+
+	.carousel::after,
+	.carousel__next {
+		right: -1rem;
+	}
+
+	.review-container {
+		padding: 1em;
+		text-align: center;
+	}
+
+	.reviewer-name {
+		font-size: 1.2em;
+		font-weight: bold;
+		color: #85d04c;
+		margin-top: 0.1rem;
+	}
+
+	.review-title {
+		font-size: 1.5em;
+		font-weight: bold;
+		color: #ffffff;
+		margin-top: 0.5rem;
+	}
+
+	.review-text {
+		font-size: 1em;
+		color: #b6b6b6;
+		word-wrap: break-word;
+		margin-top: 0.25rem;
+	}
+
+	.review-container img {
+		width: 180px;
+		align-items: center;
+		margin-left: 3.3rem;
+		margin-top: 0.5rem;
+	}
+</style>

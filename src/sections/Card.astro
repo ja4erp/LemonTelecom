@@ -1,0 +1,450 @@
+---
+import Typography from "@/components/Typography.astro"
+---
+
+<style>
+	.title-context {
+		font-size: 24px;
+		font-weight: 600;
+		line-height: 1.16667;
+		margin: 4rem 0 0 1.5rem;
+		font-family: "San Francisco";
+	}
+
+	.title-context span {
+		color: #6e6e73;
+	}
+
+	.container {
+		display: flex;
+		overflow-x: auto; /* Creamos un div scrollable de forma horizontal */
+		padding: 1.8rem 0rem;
+		z-index: 0;
+		background-color: #0606069a;
+		border-radius: 10px;
+	}
+	.overflow-x-hidden {
+		overflow-x: visible;
+		color: #6e6e7300;
+	}
+
+	.grid::-webkit-scrollbar {
+		display: none; /* Escondemos la scrollbar en Chrome, Safari y Edge */
+		color: #6e6e7300;
+	}
+
+	.card {
+		position: relative; /* Esta posición para poder posicionar el texto de la clase "body" */
+		flex: 0 0 309px; /* flex grow 0 para que todas ocupen el mismo espacio, flex-shrink 0 para que no se encojan y flex-basis 309px de ancho. */
+		width: 190px;
+		height: 384px; /*354*/ 
+		background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+		transition: all 0.5s ease;
+		overflow: hidden; /* Para poder ver el borde redondeado */
+		margin-left: 1.5rem;
+		box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.08);
+		z-index: 0;
+	}
+
+	.card:hover {
+		transform: scaleY(1);
+	}
+	.image {
+		width: 100%;
+	}
+
+	.link {
+		font-size: 21px;
+	}
+
+	.text {
+		font-size: 17px;
+		font-weight: 300;
+	}
+
+	.black-text {
+		color: black;
+	}
+
+	.white-text {
+		color: white;
+	}
+	a::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		bottom: -2px;
+		height: 3px;
+		color: #b7ff2e;
+		transform-origin: left;
+		transform: scaleX(0);
+		transition: transform 0.2s ease-in-out;
+		margin-top: 0rem;
+	}
+	.prueba {
+		font-weight: 700;
+		margin-top: -3.1rem;
+		z-index: 0;
+	}
+
+	.precio {
+		font-family: "Druk";
+
+		z-index: 0;
+		font-size: 64px;
+	}
+	.text {
+		color: #b7ff2e;
+		z-index: 1;
+	}
+
+	.text3 {
+		color: #fefefe;
+		z-index: 1;
+		font-weight: 900;
+	}
+	.text2 {
+		margin-top: 2rem;
+		color: #b7ff2e;
+		z-index: 999;
+		align-items: center;
+		justify-items: center;
+		font-size: 34px;
+	}
+
+	a:hover::before {
+		transform: scaleX(1);
+	}
+
+	.-rotate-6 {
+		--tw-rotate: -3deg;
+		transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+			skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+			scaleY(var(--tw-scale-y));
+	}
+	.subscribe {
+		display: flex;
+		flex-direction: column;
+		align-items: center; /* Centra los elementos */
+	}
+
+	.subscribe button {
+		max-width: 140px; /* Ajusta este valor a tu gusto */
+		background-color: #9dda27;
+		border: none;
+		color: #000;
+		padding: 8px;
+		cursor: pointer;
+		border-radius: 5px; /* Rounded corners */
+		width: 100%; /* Full width */
+		font-size: 20px;
+		margin-top: 2rem;
+		font-family: "Druk";
+	}
+	.subscribe button:active {
+		transform: scale(0.95); /* Reduce el tamaño del botón al hacer clic */
+	}
+
+	.row {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+		margin-right: -15px;
+		margin-left: -15px;
+	}
+	.top {
+		margin-top: 2rem;
+	}
+
+	.top1 {
+		margin-top: 1rem;
+	}
+	.top2 {
+		margin-top: 10rem;
+	}
+	.c-hteraL-ifKwgje-css {
+		---backgroundColor: linear-gradient(47deg, #99ff0a 50.5%, #aeff00 147.24%);
+	}
+	.c-hteraL {
+		position: relative;
+		border-radius: 0.8rem 0.8rem 0rem 0rem;
+		padding: 0.2rem 1.5rem;
+		color: black;
+		text-transform: uppercase;
+		font-size: 2rem;
+		z-index: 0;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		background: var(---backgroundColor);
+		font-weight: 900;
+		font-family: "Druk";
+	}
+	.left {
+		padding-left: 1rem;
+	}
+</style>
+
+<div class="position top">
+	<section class="flex flex-col place-items-center gap-4 lg:gap-9">
+		<Typography
+			as="h4"
+			variant="h4"
+			color="primary"
+			class:list={"text2 -rotate-6 items-center text-center font-atomic"}
+		>
+			Tu decides
+		</Typography>
+	</section>
+	<div class="top1 container">
+		<article class="card col col-md-6 col-lg-3">
+			<div
+				id="footer-offer-new-card-1473-3005"
+				class="c-hteraL c-hteraL-iBEuBa-isAnimated-true c-hteraL-ifKwgje-css"
+			>
+				<h1 class="c-hteraL relative -rotate-0 text-4xl uppercase underline-offset-8 transition">
+					¡PRECIO PARA SIEMPRE!
+				</h1>
+			</div>
+			<Typography
+				as="h4"
+				variant="h4"
+				class:list={"text2 -rotate-6 items-center text-center font-atomic "}
+			>
+				Movil 10GB
+			</Typography>
+			<section class="white-text">
+				<a class="link"></a>
+				<p class="text">
+					<Typography as="h3" variant="h3" color="white" class:list={"precio text-center"}>
+						4’90€
+					</Typography>
+				</p>
+				<section class="flex flex-col place-items-center gap-2 lg:gap-1">
+					<h4 class="text3 top relative transition">
+						<a>
+							<img
+								loading="eager"
+								src="../../img/arrow-right.png"
+								class="left inline-block h-auto w-12 select-none"
+								alt="Selector"
+							/>
+						</a> Llamadas Ilimitadas
+					</h4>
+					<h4 class="text3 relative transition">
+						<a>
+							<img
+								loading="eager"
+								src="../../img/arrow-right.png"
+								class="left-1 inline-block h-auto w-8 select-none"
+								alt="Selector"
+							/>
+						</a>Red de orange
+					</h4>
+					<h4 class="text3 relative transition">
+						<a>
+							<img
+								loading="eager"
+								src="../../img/arrow-right.png"
+								class="left-1 inline-block h-auto w-8 select-none"
+								alt="Selector"
+							/>
+						</a>Sin permanencia.
+					</h4>
+				</section>
+			</section>
+			<div class="subscribe">
+				<button><b>Más informacion</b></button>
+			</div>
+		</article>
+
+		<article class="card col col-md-6 col-lg-3">
+			<div
+				id="footer-offer-new-card-1473-3005"
+				class="c-hteraL c-hteraL-iBEuBa-isAnimated-true c-hteraL-ifKwgje-css"
+			>
+				<h1 class="c-hteraL relative -rotate-0 text-4xl uppercase underline-offset-8 transition">
+					¡PRECIO PARA SIEMPRE!
+				</h1>
+			</div>
+			<Typography
+				as="h4"
+				variant="h4"
+				class:list={"text2 -rotate-6 items-center text-center font-atomic "}
+			>
+				Movil 32GB
+			</Typography>
+			<section class="white-text">
+				<a class="link"></a>
+				<p class="text">
+					<Typography as="h3" variant="h3" color="white" class:list={"precio text-center"}>
+						14’90€
+					</Typography>
+				</p>
+				<section class="flex flex-col place-items-center gap-2 lg:gap-1">
+					<h4 class="text3 top relative transition">
+						<a>
+							<img
+								loading="eager"
+								src="../../img/arrow-right.png"
+								class="left inline-block h-auto w-12 select-none"
+								alt="Selector"
+							/>
+						</a> Llamadas Ilimitadas
+					</h4>
+
+					<h4 class="text3 relative transition">
+						<a>
+							<img
+								loading="eager"
+								src="../../img/arrow-right.png"
+								class="left-1 inline-block h-auto w-8 select-none"
+								alt="Selector"
+							/>
+						</a>Red de orange
+					</h4>
+					<h4 class="text3 relative transition">
+						<a>
+							<img
+								loading="eager"
+								src="../../img/arrow-right.png"
+								class="left-1 inline-block h-auto w-8 select-none"
+								alt="Selector"
+							/>
+						</a>Sin permanencia.
+					</h4>
+				</section>
+				
+			</section>
+			<div class="subscribe">
+				<button><b>Más informacion</b></button>
+			</div>
+		</article>
+		<article class="card col col-md-6 col-lg-3">
+			<div
+				id="footer-offer-new-card-1473-3005"
+				class="c-hteraL c-hteraL-iBEuBa-isAnimated-true c-hteraL-ifKwgje-css"
+			>
+				<h1 class="c-hteraL relative -rotate-0 text-4xl uppercase underline-offset-8 transition">
+					¡PRECIO PARA SIEMPRE!
+				</h1>
+			</div>
+			<Typography
+				as="h4"
+				variant="h4"
+				class:list={"text2 -rotate-6 items-center text-center font-atomic "}
+			>
+				Movil 35GB
+			</Typography>
+			<section class="white-text">
+				<a class="link"></a>
+				<p class="text">
+					<Typography as="h3" variant="h3" color="white" class:list={"precio text-center"}>
+						19’90€
+					</Typography>
+				</p>
+				<section class="flex flex-col place-items-center gap-2 lg:gap-1">
+					<h4 class="text3 top relative transition">
+						<a>
+							<img
+								loading="eager"
+								src="../../img/arrow-right.png"
+								class="left inline-block h-auto w-12 select-none"
+								alt="Selector"
+							/>
+						</a> Llamadas Ilimitadas
+					</h4>
+
+					<h4 class="text3 relative transition">
+						<a>
+							<img
+								loading="eager"
+								src="../../img/arrow-right.png"
+								class="left-1 inline-block h-auto w-8 select-none"
+								alt="Selector"
+							/>
+						</a>Red de orange
+					</h4>
+					<h4 class="text3 relative transition">
+						<a>
+							<img
+								loading="eager"
+								src="../../img/arrow-right.png"
+								class="left-1 inline-block h-auto w-8 select-none"
+								alt="Selector"
+							/>
+						</a>Sin permanencia.
+					</h4>
+				</section>
+				
+			</section>
+			<div class="subscribe">
+				<button><b>Más informacion</b></button>
+			</div>
+		</article>
+		<article class="card col col-md-6 col-lg-3">
+			<div
+				id="footer-offer-new-card-1473-3005"
+				class="c-hteraL c-hteraL-iBEuBa-isAnimated-true c-hteraL-ifKwgje-css"
+			>
+				<h1 class="c-hteraL relative -rotate-0 text-4xl uppercase underline-offset-8 transition">
+					¡PRECIO PARA SIEMPRE!
+				</h1>
+			</div>
+			<Typography
+				as="h4"
+				variant="h4"
+				class:list={"text2 -rotate-6 items-center text-center font-atomic "}
+			>
+				Movil GB ilimitados
+			</Typography>
+			<section class="white-text">
+				<a class="link"></a>
+				<p class="text">
+					<Typography as="h3" variant="h3" color="white" class:list={"precio text-center"}>
+						30’90€
+					</Typography>
+				</p>
+				<section class="flex flex-col place-items-center gap-2 lg:gap-1">
+					<h4 class="text3 top relative transition">
+						<a>
+							<img
+								loading="eager"
+								src="../../img/arrow-right.png"
+								class="left inline-block h-auto w-12 select-none"
+								alt="Selector"
+							/>
+						</a> Llamadas Ilimitadas
+					</h4>
+
+					<h4 class="text3 relative transition">
+						<a>
+							<img
+								loading="eager"
+								src="../../img/arrow-right.png"
+								class="left-1 inline-block h-auto w-8 select-none"
+								alt="Selector"
+							/>
+						</a>Red de orange
+					</h4>
+					<h4 class="text3 relative transition">
+						<a>
+							<img
+								loading="eager"
+								src="../../img/arrow-right.png"
+								class="left-1 inline-block h-auto w-8 select-none"
+								alt="Selector"
+							/>
+						</a>Sin permanencia.
+					</h4>
+				</section>
+				
+			</section>
+			<div class="subscribe">
+				<button><b>Más informacion</b></button>
+			</div>
+		</article>
+	</div>
+</div>

@@ -1,0 +1,52 @@
+---
+import type { APIContext } from "astro";
+import Stripe from "stripe";
+
+// Configura tu clave secreta de Stripe
+const stripe = new Stripe('sk_test_51PFHRvHSExnASLrOiXI8qoLpQhJXhy2u6A28rOi11IqQKTsqje5rMmbFssYEwQNAEyCUKXvwqZ1GFLZwVKN8VVwy00D8L9qFEp', { apiVersion: '2020-08-27' });
+
+export async function POST(context: APIContext) {
+  const formData = await context.request.formData()
+  const product = await formData.get("product");
+
+  // Valida los datos antes de usarlos
+  if (!product) {
+    return new Response(JSON.stringify({ message: "Faltan campos requeridos" }), { status: 400 });
+  }
+
+  // Prepara los datos para Stripe
+  const customerEmail = 'cliente@example.com'; // Deberías obtener esto del usuario
+
+  // Crea un nuevo cliente en Stripe
+  const customer = await stripe.customers.create({
+    email: customerEmail,
+  });
+
+  // Crea una nueva suscripción para el cliente
+  const subscription = await stripe.subscriptions.create({
+    customer: customer.id,
+    items: [{ price: 'price_1PFHWNHSExnASLrOzMDF6Sq5' }], // Deberías obtener esto de tu configuración de productos de Stripe
+    expand: ['latest_invoice.payment_intent'],
+  });
+
+  const paymentIntent = subscription.latest_invoice.payment_intent;
+
+  // Verifica el estado del PaymentIntent
+  if (paymentIntent.status === 'succeeded') {
+    // Aquí puedes procesar la transacción exitosa
+    console.log(`La suscripción ha sido creada. ID de la suscripción: ${subscription.id}`);
+  } else {
+    // Aquí puedes manejar el caso en que la transacción no sea exitosa
+    console.log(`La suscripción no ha sido creada. ID del cliente: ${customer.id}`);
+  }
+
+  // Devuelve una respuesta de éxito
+  return new Response(JSON.stringify({ mensaje: "¡Éxito!" }), { status: 200 });
+};
+
+
+---
+
+<form method="POST">
+  <button type="submit">Comprar ahora</button>
+</form>

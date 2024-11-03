@@ -1,0 +1,126 @@
+---
+import { db, Tickets, eq } from 'astro:db';
+
+const userId = Astro.locals.user?.id;
+
+// Recupera todos los tickets y respuestas del usuario actual de la base de datos
+const ticketsAndResponses = await db.select().from(Tickets).where(eq(Tickets.userId, userId)).orderBy('timestamp', 'asc');
+
+const user = Astro.locals.user;
+if (!user) {
+  return Astro.redirect("/signup");
+}
+---
+
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+<h1 class="title">Ticket</h1>
+
+{
+  ticketsAndResponses.map(ticket => (
+    <article>
+      <h3 class="ticket-title">
+        {ticket.title}
+        {ticket.open ? '' : <span style={{color: 'red'}}> (Ticket cerrado)</span>}
+      </h3>
+      <p class="ticket-description">{ticket.description}</p>
+      {
+        ticketsAndResponses.filter(response => response.ticketId === ticket.id && response.timestamp > ticket.timestamp).map(response => (
+          <p>{response.description}</p>
+        ))
+      }
+    </article>
+  ))
+}
+
+<form method="POST" action="/api/ticketResponse">
+  <input type="hidden" name="ticketId" value={ticketsAndResponses[0].id}>
+  <textarea name="description" placeholder="Escribe tu respuesta..."></textarea>
+  <input type="submit" value="Responder">
+  <input type="submit" name="closeTicket" value="Cerrar ticket" style="background-color: red;">
+</form>
+</body>
+
+<style>
+  .title {
+    font-size: 75px;
+    padding-left: 150px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .ticket-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .ticket-description {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .responses {
+    list-style: none;
+    padding: 0px;
+    margin: 0;
+  }
+
+  .response {
+    margin-bottom: 20px;
+  }
+
+  .response-description {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+
+  .response-timestamp {
+    color: #666;
+    font-size: 14px;
+  }
+  h1{
+    font-size: 75px;
+    padding-left: 150px;
+    font-weight: bold;
+  }
+  h2{
+    font-size: 40px;
+    font-weight: 500;
+    padding-left: 50px;
+  }
+
+  form {
+    margin-top: 20px;
+  }
+
+  textarea {
+    width: 40%;
+    padding: 16px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+
+  input[type="submit"] {
+    margin-left: 10px;
+  }
+  :root{
+    color-scheme: light dark;
+  }
+</style>

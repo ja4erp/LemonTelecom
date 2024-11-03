@@ -1,0 +1,133 @@
+<div class="carousel">
+	<div class="track">
+		<div class="slide">
+			<img
+				class="carousel-image"
+				src="/img/banner-iphone.png"
+				alt="Iphone con datos moviles"
+			/>
+			<div class="content">
+				<h2>Más Gigas por el mismo precio para siempre.</h2>
+				<p>Mejoramos nuestras tarifas: 90GB por 14,90€ y 150GB por 19,90 €/mes.</p>
+				<a href="#"><button><b>Más Informacion →</b></button></a>
+			</div>
+		</div>
+		<div class="slide">
+			<img
+				class="carousel-image"
+				src="/img/banner-iphone.png"
+				alt="Iphone con datos moviles"
+			/>
+			<div class="content">
+				<h2>Hazte ya con lo último en smartphones.</h2>
+				<p>Escoge tu smartphone favorito al mejor precio. ¡Descúbrelos!</p>
+				<a href="https://xdual.es"><button><b>Más Informacion →</b></button></a>
+			</div>
+		</div>
+		<img
+		src="/img/CPE-PRO-5.webp"
+		alt="Iphone con datos moviles"
+		/>
+		<div class="slide">
+			<div class="content">
+				<h2>El mejor contenido y toda LALIGA HYPERMOTION</h2>
+				<p>
+					Disfruta de todos los partidos de tu equipo favorito y más de 100 canales temáticos
+					contratando nuestros packs de TV desde solo 6’90 € al mes,
+				</p>
+				<a href="#"><button><b>Más Informacion →</b></button></a>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+	.top{
+		margin-top: -5rem;
+	}
+	h2 {
+		color: #2c2c2c;
+		font-size: 40px;
+		font-family: "Druk";
+		margin-left: 2rem;
+		text-transform: uppercase;
+	}
+
+	.slide button {
+		border-radius: 7px;
+		border-color: transparent;
+		background-color: white;
+		color: #2c2c2c;
+		border: 2px solid #a6a6a6;
+		padding: 0.5em 2.5em;
+		text-decoration: none;
+		cursor: pointer;
+		border-width: 0 0 4px;
+		margin-left: 3rem;
+	}
+
+	.slide p {
+		color: rgb(61, 61, 61);
+		margin-left: 2rem;
+		font-family: "Roboto", sans-serif;
+		font-size: 20px;
+		margin-top: -0.5rem;
+		font-weight: 900;
+	}
+
+	.carousel {
+		position: relative;
+		width: auto; 
+		height: 150px; /* Altura fija de 120px */
+		overflow: hidden;
+		border-radius: 7px;
+		background: linear-gradient(0deg, rgb(147, 202, 35) 0%, rgba(183, 255, 46, 1) 100%);
+		margin-top: -2rem;
+		border: 2px solid #c7ff8b;
+		margin-top: -7rem;
+	}
+	.carousel .track {
+		display: flex;
+		width: calc(100vw * 3); 
+		animation: carousel 35s infinite; /* Actualizado el tiempo para tres imágenes */
+	}
+	.carousel .track .slide {
+		width: 100vw; /* Ancho total de la ventana */
+		height: 150px; /* Altura fija de 120px */
+		position: relative;
+	}
+	.carousel .track .slide img {
+		z-index: 1;
+		width: 10vw; /* Ancho total de la ventana */
+		height: 200px; 
+		top: 6rem;
+		margin-left: 53rem;
+		object-fit: cover; /* Asegura que las imágenes se escalen correctamente */
+	}
+	.carousel .track .slide .content {
+		position: absolute;
+		bottom: 10px;
+		left: 10px;
+		color: white;
+	}
+	@keyframes carousel {
+		0% {
+			transform: translateX(0);
+		}
+		30% {
+			transform: translateX(0);
+		}
+		40% {
+			transform: translateX(-100vw);
+		}
+		70% {
+			transform: translateX(-100vw);
+		}
+		80% {
+			transform: translateX(-200vw);
+		}
+		100% {
+			transform: translateX(0);
+		}
+	}
+	
+</style>

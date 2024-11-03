@@ -1,0 +1,28 @@
+---
+const user = Astro.locals.user;
+if (!user) {
+  return Astro.redirect("/signup");
+}
+---
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <form method="POST" action="/api/ticketopen">
+        <label for="title">Título:</label><br>
+        <input class="text" type="text" id="title" name="title" required><br>
+        <label for="description">Descripción:</label><br>
+        <textarea  class="text" id="description" name="description"></textarea><br>
+        <input type="submit" value="Enviar">
+      </form>      
+
+</body>
+<style>
+    :root{
+        color-scheme: light dark;
+    }
+    .text{
+        background-color: #2e2057;
+    }
+</style>
+

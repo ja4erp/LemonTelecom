@@ -1,0 +1,139 @@
+---
+import Typography from "@/components/Typography.astro"
+---
+
+<section class="top my-40">
+	<a
+		class="text relative relative flex -rotate-6 items-center justify-center font-atomic text-2xl underline-offset-8 transition hover:scale-110 md:text-4xl"
+	>
+		<span class="relative">tenemos lo que necesitas</span>
+	</a>
+
+	<div class="conti mt-12 grid select-none grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+		{
+			(
+				<>
+					<a class="company-link  conti conti conti conti group relative flex items-center justify-center md:h-32">
+						<img
+							alt="tarjeta sim"
+							loading="eager"
+							src={`/icon/tarjeta-sim.svg`}
+							class="company-logo w-14 conti conti img conti h-auto px-4 transition group-hover:scale-110"
+						/>
+						<Typography as="h3" variant="h3" color="white" class:list={"text-center"}>
+							Tarjeta sim
+						</Typography>
+					</a>
+					<a class="company-link  conti conti group relative flex items-center justify-center md:h-32">
+						<img
+							alt="Portabilidad"
+							loading="eager"
+							src={`/icon/avion-de-papel.svg`}
+							class="company-logo w-14 conti img h-auto px-4 transition group-hover:scale-110"
+						/>
+						<Typography as="h3" variant="h3" color="white" class:list={"text-center"}>
+							Portabilidad
+						</Typography>
+					</a>
+					<a class="company-link  conti group relative flex items-center justify-center md:h-32">
+						<img
+							alt="Cobertura"
+							loading="eager"
+							src={`/icon/barras-de-senal-buenas.svg`}
+							class="company-logo w-14 conti img h-auto px-4 transition group-hover:scale-110"
+						/>
+						<Typography as="h3" variant="h3" color="white" class:list={"text-center"}>
+							Cobertura
+						</Typography>
+					</a>{" "}
+					<a class="company-link  conti group relative flex items-center justify-center md:h-32">
+						<img
+							alt="Roading map"
+							loading="eager"
+							src={`/icon/tierra-americas.svg`}
+							class="company-logo w-14 conti img h-auto px-4 transition group-hover:scale-110"
+						/>
+						<Typography as="h3" variant="h3" color="white" class:list={"text-center"}>
+						Roaming map
+						</Typography>
+					</a>
+					<a class="company-link  conti group relative flex items-center justify-center md:h-32">
+						<img
+							alt="Fibra y wifi"
+							loading="eager"
+							src={`/icon/enrutador.svg`}
+							class="company-logo w-14 conti img h-auto px-4 transition group-hover:scale-110"
+						/>
+						<Typography as="h3" variant="h3" color="white" class:list={"text-center"}>
+							Fibra y wifi
+						</Typography>
+					</a>
+					<a class="company-link  conti group relative flex items-center justify-center md:h-32">
+						<img
+							alt="Datos moviles 5G"
+							loading="eager"
+							src={`/icon/torre-de-transmision.svg`}
+							class="company-logo w-14 conti img h-auto px-4 transition group-hover:scale-110"
+						/>
+						<Typography as="h3" variant="h3" color="white" class:list={"text-center"}>
+							Datos 5G
+						</Typography>
+					</a>
+				</>
+			)
+		}
+	</div>
+</section>
+
+<style>
+	.company-link {
+		background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+		transition: all 0.5s ease;
+	}
+
+	.company-link::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		display: block;
+		background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, transparent);
+		opacity: 0;
+		height: 50%;
+		transition:
+			opacity 0.2s ease-in-out,
+			height 0.2s ease-in-out;
+	}
+
+	.company-link:hover::before {
+		opacity: 0.8;
+		height: 90%;
+		box-shadow: 0 -4px 3px rgba(50, 50, 50, 0.75);
+	}
+
+	.company-link:hover .company-logo {
+		transform: scale(1.1);
+	}
+	.info {
+		margin-top: -10rem;
+		z-index: 1;
+	}
+	.-rotate-6 {
+		--tw-rotate: -3deg;
+		transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+			skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+			scaleY(var(--tw-scale-y));
+	}
+	.text {
+		color: #b7ff2e;
+		z-index: 1;
+	}
+	.top {
+		margin-top: -6rem;
+	}
+	.conti {
+		z-index: 999;
+	}
+	.img {
+		z-index: 1;
+	}
+</style>

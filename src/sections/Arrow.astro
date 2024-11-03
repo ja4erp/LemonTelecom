@@ -1,0 +1,35 @@
+---
+
+---
+
+<section
+	class="mx-auto mt-16 flex animate-fade-in flex-col place-items-center text-center text-primary animate-delay-300 motion-reduce:animate-delay-[0s] motion-reduce:animate-duration-[0s] md:mt-32"
+>
+	<header class="text text-3xl font-semibold uppercase md:text-4xl">
+		<span class="date-time-separator hidden">
+			<span aria-hidden="true" class="mx-1 hidden md:inline">·</span>
+			<br aria-hidden="true" class="block md:hidden" />
+		</span> Calidad precio
+	</header>
+	<style>
+		/* Efecto de subrayado animado */
+		.underline-transition {
+			background-image: linear-gradient(transparent, transparent),
+				linear-gradient(var(--color-accent) 20%, var(--color-accent) 80%);
+			background-size: 0 3px;
+			background-position: 100% 100%;
+			background-repeat: no-repeat;
+			transition: background-size 0.3s ease-in-out;
+		}
+		.underline-transition:hover {
+			background-size: 100% 3px;
+			background-position: 0 100%;
+		}
+		.text {
+			margin-top: -10rem;
+		}
+		.img {
+			z-index: 999;
+		}
+	</style>
+</section>
