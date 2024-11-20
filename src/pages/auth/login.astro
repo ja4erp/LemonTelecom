@@ -18,6 +18,9 @@ import Layout from "@/layouts/Layout.astro"
             <label for="password">Contraseña</label>
             <input id="password" name="password" type="password" placeholder="Password" required />
           </div>
+          <div>
+            <a href="/auth/register" class="register-link">No tienes una cuenta? Registrate</a>
+          </div>
           <div class="inputBx submit-box">
             <input id="submit" type="submit" value="Login" />
           </div>
@@ -127,6 +130,13 @@ import Layout from "@/layouts/Layout.astro"
 
       input:invalid ~ .error-message {
         display: block;
+      }
+
+      .register-link {
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.875rem;
+        margin-top: 10px;
       }
 
       /* Responsive Design */

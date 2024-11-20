@@ -1,0 +1,36 @@
+---
+import NavBarDash from '@/components/NavBarDash.astro';
+import Layout from '@/layouts/Layout.astro';
+import Home from '@/sections/dashboard/Home.astro';
+import Products from '@/sections/dashboard/Products.astro';
+import Prices from '@/sections/dashboard/Prices.astro';
+import Account from '@/sections/dashboard/Account.astro';
+import Support from '@/sections/dashboard/Support.astro';
+
+const { section } = Astro.params; // Extraemos el parámetro dinámico de la URL
+
+// Seleccionamos el componente basado en el valor de `section`
+let Component;
+
+switch (section) {
+    case 'products':
+        Component = Products;
+        break;
+    case 'prices':
+        Component = Prices;
+        break;
+    case 'account':
+        Component = Account;
+        break;
+    case 'support':
+        Component = Support;
+        break;
+    default:
+        Component = Home; 
+}
+---
+
+<Layout description="null" title="Lemon | Dashboard">
+    <NavBarDash />
+    <Component />
+</Layout>

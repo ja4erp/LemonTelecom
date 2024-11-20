@@ -1,238 +1,109 @@
+---
+const { section } = Astro.params;
+---
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f9f9f9;
+            font-weight: 600;
+        }
 
-    <!-- BOX ICONS CSS-->
-    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 170px;
+            height: 100%;
+            background-color: #111111;
+            padding-top: 20px;
+            box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar h1 {
+            font-family: Atomic, Arial, Helvetica, sans-serif;
+            color: var(--color-accent);
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar ul li {
+            text-align: left;
+            margin: 10px 0;
+        }
+
+        .navbar ul li a {
+            display: block;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            transition: background-color 0.3s, border-radius 0.3s;
+            border-radius: 0 20px 20px 0;
+        }
+
+        .navbar ul li a:hover {
+            background-color: #555;
+        }
+
+        .navbar ul li a.active {
+            background-color: #b7ff2e;
+            color: black;
+            border-radius: 0 20px 20px 20px;
+        }
+
+
+    </style>
 </head>
-<body id="body">
-<div class="l-navbar" id="navbar">
-    <nav class="nav">
-        <div>
-            <a href="#" class="nav__logo">
-                <img src="../pages/dashboard/assets/icons/" alt="" class="nav__logo-icon">
-                <span class="nav__logo-text">Xmovil</span>
-            </a>
+<body>
+    <div class="navbar">
+        <h1>Lemon</h1>
+        <ul>
+            <li><a href="/dashboard/home" class="nav-item active" id="home">Home</a></li>
+            <li><a href="/dashboard/products" class="nav-item" id="products">Products</a></li>
+            <li><a href="/dashboard/prices" class="nav-item" id="prices">Prices</a></li>
+            <li><a href="/dashboard/account" class="nav-item" id="account">Account</a></li>
+            <li><a href="/dashboard/support" class="nav-item" id="support">Support</a></li>
+        </ul>
+    </div>
 
-            <div class="nav__toggle" id="nav-toggle">
-                <i class='bx bx-chevron-right'></i>
-            </div>
+    <script>
+        // Obtener todos los elementos del menú
+        const navItems = document.querySelectorAll(".nav-item");
 
-            <ul class="nav__list">
-                <a href="#" class="nav__link active">
-                    <i class='bx bx-grid-alt nav__icon'></i>
-                    <span class="nav__text">Home</span>
-                </a>
-                <a href="#" class="nav__link">
-                    <i class='bx bx-user nav__icon' ></i>
-                    <span class="nav__text">User</span>
-                </a>
-                <a href="#" class="nav__link">
-                    <i class='bx bx-message-rounded nav__icon' ></i>
-                    <span class="nav__text">Support</span>
-                </a>
-            </ul>
-        </div>
-        <a href="#" class="nav__link">
-            <i class='bx bx-log-out-circle nav__icon'></i>
-            <span class="nav__text">Close</span>
-        </a>
-    </nav>
-</div>
-<!-- MAIN JS -->
-<script src="../pages/dashboard/assets/ts/main.ts"></script>
+        // Función para actualizar el estado activo
+        const setActiveLink = () => {
+            const path = window.location.pathname;  // Obtener la ruta actual
+            navItems.forEach(item => {
+                // Remover 'active' de todos los enlaces
+                item.classList.remove("active");
+
+                // Verificar si el href del item coincide con la ruta actual
+                if (path.includes(item.getAttribute("href"))) {
+                    item.classList.add("active");  // Añadir 'active' al enlace correspondiente
+                }
+            });
+        };
+
+        // Ejecutar la función para establecer el estado activo al cargar la página
+        setActiveLink();
+
+        // Opcionalmente, puedes agregar el evento click para cambiar el estado activo cuando se haga clic
+        navItems.forEach(item => {
+            item.addEventListener("click", function () {
+                navItems.forEach(nav => nav.classList.remove("active"));
+                item.classList.add("active");
+            });
+        });
+    </script>
 </body>
-</main>
-<style>
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap");
-/*===== VARIABLES CSS Y SASS =====*/
-/*Varibles sass*/
-/*Variables css*/
-/*===== Colores =====*/
-:root {
---first-color: #1d1d1d;
---second-color: #b7ff2e;
---white-color: #EDEDED;
-}
-
-/*===== Fuente y tipografia =====*/
-:root {
---body-font: 'Quicksand', sans-serif;
---small-font-size: 0.875rem;
-}
-
-@media screen and (min-width: 768px) {
-:root {
-    --small-font-size: 0.938rem;
-}
-}
-
-/*===== z index =====*/
-:root {
---z-back: -10;
---z-normal: 1;
---z-tooltip: 10;
---z-fixed: 100;
---z-modal: 1000;
-}
-
-/*===== BASE =====*/
-*, ::before, ::after {
--webkit-box-sizing: border-box;
-        box-sizing: border-box;
-}
-
-body {
-position: relative;
-margin: 0;
-padding: 0rem 0 0 0rem;
-font-family: var(--body-font);
-background-color: var(--white-color);
--webkit-transition: .5s;
-transition: .5s;
-}
-
-h1 {
-margin: 0;
-}
-
-ul, li {
-margin: 0;
-padding: 0;
-list-style: none;
-}
-
-a {
-text-decoration: none;
-background-color: ;
-}
-
-/*=====  NAV =====*/
-.l-navbar {
-position: fixed;
-top: 0;
-left: 0;
-width: 56px;
-height: 100vh;
-background-color: var(--first-color);
-padding: 1.25rem .5rem 2rem;
--webkit-transition: .5s;
-transition: .5s;
-z-index: var(--z-fixed);
-}
-
-.nav {
-height: 100%;
-display: -webkit-box;
-display: -ms-flexbox;
-display: flex;
--webkit-box-orient: vertical;
--webkit-box-direction: normal;
-    -ms-flex-direction: column;
-        flex-direction: column;
--webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-        justify-content: space-between;
-overflow: hidden;
-}
-
-.nav__logo {
-display: -webkit-box;
-display: -ms-flexbox;
-display: flex;
--webkit-box-align: center;
-    -ms-flex-align: center;
-        align-items: center;
-margin-bottom: 2rem;
-padding: 0 .5rem;
-}
-
-.nav__logo-icon {
-margin-right: 1.2rem;
-}
-
-.nav__logo-text {
-color: var(--white-color);
-font-weight: 700;
-}
-
-.nav__toggle {
-position: absolute;
-top: 1.10rem;
-right: -.6rem;
-width: 18px;
-height: 18px;
-background-color: var(--second-color);
-border-radius: 50%;
-font-size: 1.25rem;
-color: var(--first-color);
-display: -webkit-box;
-display: -ms-flexbox;
-display: flex;
--webkit-box-align: center;
-    -ms-flex-align: center;
-        align-items: center;
--webkit-box-pack: center;
-    -ms-flex-pack: center;
-        justify-content: center;
-cursor: pointer;
--webkit-transition: .5s;
-transition: .5s;
-}
-
-.nav__link {
-display: -webkit-box;
-display: -ms-flexbox;
-display: flex;
--webkit-box-align: center;
-    -ms-flex-align: center;
-        align-items: center;
-padding: .5rem;
-margin-bottom: 1rem;
-border-radius: .5rem;
-color: var(--white-color);
--webkit-transition: .3s;
-transition: .3s;
-}
-
-.nav__link:hover {
-background-color: var(--second-color);
-color: var(--first-color);
-}
-
-.nav__icon {
-font-size: 1.5rem;
-margin-right: 1rem;
-}
-
-.nav__text {
-font-weight: 700;
-}
-
-/*Show menu*/
-.show {
-width: 168px;
-}
-
-/*Rotate toggle*/
-.rotate {
--webkit-transform: rotate(180deg);
-        transform: rotate(180deg);
--webkit-transition: .5s;
-transition: .5s;
-}
-
-/*Active links menu*/
-.active {
-background-color: var(--second-color);
-color: var(--first-color);
-}
-
-/*Add padding body*/
-.expander {
-padding: 1rem 0 0 12rem;
--webkit-transition: .5s;
-transition: .5s;
-}
-
-</style>
+</html>

@@ -1,21 +1,20 @@
 ---
-import Layout from "@/layouts/Layout.astro"
-import NavBarDash from "@/components/NavBarDash.astro"
-import { db, User, eq } from "astro:db"; 
+import { db, User, eq } from "astro:db"
 
+
+/* Solo en idx.dev que da error de ruta y se le hace bypass
 const user = Astro.locals.user;
 if (!user) {
   return Astro.redirect("/auth/login");
-}
-const userId = Astro.locals.user?.id;
+}*/
+
+const userId = Astro.locals.user?.id
 //const username = (await db.select().from(User).where(eq(User.id, userId)))[0]; // Obtiene el usuario con la id especificada
 //const products = await db.select().from(Products).where(eq(Products.userId, userId)); // Obtiene los productos del usuario
 ---
 
-<Layout description="null" title="null">
-	<NavBarDash>
-		<main>
-			<h1>hola</h1>
-		</main>
-	</NavBarDash>
-</Layout>
+<body>	
+	<main>
+		<slot />
+	</main>
+</body>
