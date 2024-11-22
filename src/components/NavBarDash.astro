@@ -1,109 +1,74 @@
 ---
-const { section } = Astro.params;
+const { pathname } = Astro.url; // Obtén la ruta actual
 ---
-<head>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #f9f9f9;
-            font-weight: 600;
-        }
 
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 170px;
-            height: 100%;
-            background-color: #111111;
-            padding-top: 20px;
-            box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
-        }
+<div class="navbar">
+    <h1>Lemon</h1>
+    <ul>
+        <li><a href="/dashboard/home" class={`nav-item ${pathname === '/dashboard/home' ? 'active' : ''}`} id="home">Home</a></li>
+        <li><a href="/dashboard/products" class={`nav-item ${pathname === '/dashboard/products' ? 'active' : ''}`} id="products">Products</a></li>
+        <li><a href="/dashboard/prices" class={`nav-item ${pathname === '/dashboard/prices' ? 'active' : ''}`} id="prices">Prices</a></li>
+        <li><a href="/dashboard/account" class={`nav-item ${pathname === '/dashboard/account' ? 'active' : ''}`} id="account">Account</a></li>
+        <li><a href="/dashboard/support" class={`nav-item ${pathname === '/dashboard/support' ? 'active' : ''}`} id="support">Support</a></li>
+    </ul>
+</div>
 
-        .navbar h1 {
-            font-family: Atomic, Arial, Helvetica, sans-serif;
-            color: var(--color-accent);
-            text-align: center;
-            font-size: 24px;
-            margin-bottom: 30px;
-            letter-spacing: 1px;
-        }
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #f9f9f9;
+        font-weight: 600;
+    }
 
-        .navbar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 170px;
+        height: 100%;
+        background-color: #09090b;
+        padding-top: 20px;
+        box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+    }
 
-        .navbar ul li {
-            text-align: left;
-            margin: 10px 0;
-        }
+    .navbar h1 {
+        font-family: Atomic, Arial, Helvetica, sans-serif;
+        color: var(--color-accent);
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 30px;
+        letter-spacing: 1px;
+    }
 
-        .navbar ul li a {
-            display: block;
-            padding: 15px 20px;
-            text-decoration: none;
-            color: white;
-            font-size: 16px;
-            transition: background-color 0.3s, border-radius 0.3s;
-            border-radius: 0 20px 20px 0;
-        }
+    .navbar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
 
-        .navbar ul li a:hover {
-            background-color: #555;
-        }
+    .navbar ul li {
+        text-align: left;
+        margin: 10px 0;
+    }
 
-        .navbar ul li a.active {
-            background-color: #b7ff2e;
-            color: black;
-            border-radius: 0 20px 20px 20px;
-        }
+    .navbar ul li a {
+        display: block;
+        padding: 15px 20px;
+        text-decoration: none;
+        color: white;
+        font-size: 16px;
+        transition: background-color 0.3s, border-radius 0.3s;
+        border-radius: 0 20px 20px 0;
+    }
 
+    .navbar ul li a:hover {
+        background-color: #555;
+    }
 
-    </style>
-</head>
-<body>
-    <div class="navbar">
-        <h1>Lemon</h1>
-        <ul>
-            <li><a href="/dashboard/home" class="nav-item active" id="home">Home</a></li>
-            <li><a href="/dashboard/products" class="nav-item" id="products">Products</a></li>
-            <li><a href="/dashboard/prices" class="nav-item" id="prices">Prices</a></li>
-            <li><a href="/dashboard/account" class="nav-item" id="account">Account</a></li>
-            <li><a href="/dashboard/support" class="nav-item" id="support">Support</a></li>
-        </ul>
-    </div>
-
-    <script>
-        // Obtener todos los elementos del menú
-        const navItems = document.querySelectorAll(".nav-item");
-
-        // Función para actualizar el estado activo
-        const setActiveLink = () => {
-            const path = window.location.pathname;  // Obtener la ruta actual
-            navItems.forEach(item => {
-                // Remover 'active' de todos los enlaces
-                item.classList.remove("active");
-
-                // Verificar si el href del item coincide con la ruta actual
-                if (path.includes(item.getAttribute("href"))) {
-                    item.classList.add("active");  // Añadir 'active' al enlace correspondiente
-                }
-            });
-        };
-
-        // Ejecutar la función para establecer el estado activo al cargar la página
-        setActiveLink();
-
-        // Opcionalmente, puedes agregar el evento click para cambiar el estado activo cuando se haga clic
-        navItems.forEach(item => {
-            item.addEventListener("click", function () {
-                navItems.forEach(nav => nav.classList.remove("active"));
-                item.classList.add("active");
-            });
-        });
-    </script>
-</body>
-</html>
+    .navbar ul li a.active {
+        background-color: #b7ff2e;
+        color: black;
+        border-radius: 0 20px 20px 20px;
+    }
+</style>

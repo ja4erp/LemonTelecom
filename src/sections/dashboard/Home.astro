@@ -1,1 +1,92 @@
-<h2>Holawegfs</h2>
+<div class="container fixed mx-auto mb-10 mt-10 max-w-screen-xl">
+    <div class="app">
+        <!-- Bienvenida al Usuario -->
+        <div class="w-full mb-10 px-2">
+            <div class="rounded-lg bg-zinc-950 p-8 text-center shadow">
+                <h1 class="text-3xl font-bold text-white">¡Hola! {} Te echábamos de menos</h1>
+                <p class="font-light text-gray-300">ja4erp@gmail.com</p>
+                <a href="/dashboard/account"
+                    class="mt-5 inline-flex w-full items-center justify-center rounded-lg border border-gray-300 bg-zinc-950 px-5 py-2.5 text-sm font-medium text-gray-400 hover:bg-zinc-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-gray-700">
+                    Actualizar Cuenta
+                </a>
+            </div>
+        </div>
+
+        <!-- Facturas, Servicios, y Balance -->
+        <div class="w-full px-2">
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+                <a href="https://xstar.es/dashboard" class="block max-w-sm rounded-lg border border-gray-700 bg-zinc-950 p-6 shadow hover:bg-zinc-900">
+                    <div class="flex flex-col items-center justify-center">
+                        <dt class="mb-2 text-3xl font-extrabold text-gray-200">0</dt>
+                        <dd class="text-gray-400">Servicios</dd>
+                    </div>
+                </a>
+                <a href="https://xstar.es/invoices?where=unpaid" class="block max-w-sm rounded-lg border border-gray-700 bg-zinc-950 p-6 shadow hover:bg-zinc-900">
+                    <div class="flex flex-col items-center justify-center">
+                        <dt class="mb-2 text-3xl font-extrabold text-gray-200">0</dt>
+                        <dd class="text-gray-400">Facturas</dd>
+                    </div>
+                </a>
+                <a href="https://xstar.es/balance" class="block max-w-sm rounded-lg border border-gray-700 bg-zinc-950 p-6 shadow hover:bg-zinc-900">
+                    <div class="flex flex-col items-center justify-center">
+                        <dt class="mb-2 text-3xl font-extrabold text-gray-200">€0.00</dt>
+                        <dd class="text-gray-400">Balance</dd>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Tabla de Servicios -->
+        <section class="py-3 sm:py-5">
+            <div class="mx-auto max-w-screen-2xl">
+                <div class="relative overflow-visible bg-zinc-950 shadow-md sm:rounded-lg">
+                    <div class="flex flex-col items-center justify-between space-y-3 border-b p-4 md:flex-row md:space-x-4 md:space-y-0 border-gray-700">
+                        <div class="flex w-full items-center space-x-3">
+                            <h5 class="font-semibold text-white">Tus Servicios</h5>
+                            <div class="font-medium text-gray-400">0 resultados</div>
+                        </div>
+                        <div class="flex w-full flex-row items-center justify-end space-x-3">
+                            <a href="https://xstar.es/store"
+                                class="flex w-full items-center justify-center truncate rounded-lg px-3 py-2 text-sm font-medium text-[#9cd62a] hover:text-[#8bb327] focus:outline-none focus:ring-4 focus:ring-[#8bb327] md:w-auto">
+                                <svg class="mr-2 h-3.5 w-3.5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path clip-rule="evenodd" fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"></path>
+                                </svg>
+                                Ordenar nuevo servicio
+                            </a>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm text-gray-400">
+                            <thead class="bg-zinc-900 text-xs uppercase">
+                                <tr>
+                                    <th scope="col" class="whitespace-nowrap px-4 py-3">Producto</th>
+                                    <th scope="col" class="whitespace-nowrap px-4 py-3">Fecha de Vencimiento</th>
+                                    <th scope="col" class="whitespace-nowrap px-4 py-3">Categoría</th>
+                                    <th scope="col" class="whitespace-nowrap px-4 py-3 text-right">Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="px-4 py-3">No tienes servicios</td>
+                                    <td class="px-4 py-3">-</td>
+                                    <td class="px-4 py-3">-</td>
+                                    <td class="px-4 py-3 text-right">-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="flex flex-col items-center rounded-lg border border-gray-700 bg-zinc-950 p-6 shadow">
+                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-400">
+                            No se encontraron órdenes
+                        </h5>
+                        <p class="mb-3 font-normal text-gray-400">
+                            Aún no has realizado ninguna orden. Los nuevos servicios serán visibles aquí.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
